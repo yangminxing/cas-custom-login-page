@@ -1,65 +1,78 @@
 CAS Custom Client Login Page
 =======================================
 
-概览
+Overview
 --------
 
-CAS单点登录框架可以方便的搭建单点登录系统，但是CAS使用了统一的登录页面，本项目目的在于表现如何在客户端自定义登录页面。
+CAS( Central Authentication Service ) is a open source project that could help you to make a simple single sign on web
+application. However CAS use an uniform login page on the CAS server rather than a login page on the CAS client.
+How to custom a client login page is this project's purpose.
 
-如果想在服务端自定义登录页面，请在网上搜索一些其他教程。这里不再赘述。
+Please find some other tutorials if you want to custom a login page on the CAS server. It's not should be too hard.
 
 CAS 4.0.0
 JDK 1.6
 TOMCAT 6
 
-示例如何使用
+How to use
 ---------
 
-本项目一共由4个项目组成：
+This project mainly includes five parts:
 
-**cas-server-core** : CAS服务端核心，基于官方版本改造。
-**cas-server-webapp** :  CAS服务端应用程序，基于官方版本改造。引用cas-server-core。
-**cas-client-core** : CAS客户端核心，基于官方版本改造。
-**cas-client-sample** : 一个简单的应用WEB程序。引用cas-client-core。
-**sample** : 将以上项目直接打包的样例
+**cas-server-core** : The core of CAS server based on official version.
+**cas-server-webapp** : The web application of CAS server this reference the server core. It is also based on official version.
+**cas-client-core** : The core of CAS client based on official version.
+**cas-client-sample** : A simple web application as CAS client reference the client core.
+**sample** : The demo that I packaged the cas-server-webapp  and cas-client-sample.
 
- 1. 准备三个服务容器，并部署于3个不同的IP（域名）地址下，为方便使用，这里假定三个容器的IP地址以及端口分别为：
-        192.168.243.147:8080 作为CAS服务端容器地址，简称147
-        192.168.221.128:8080 作为应用web程序1的地址，简称128
-        192.168.221.129:8080 作为应用web程序2的地址，简称129
- <br />`此处输入代码`
- 2. 配置CAS服务端
-将/sample/casserver.war 部署到147中的TOMCAT中（/webapp/casserver.war）。casserver.war中无需进行多余的配置（已经去掉了HTTP保护限制）。
-访问 http://192.168.243.147:8080/casserver/login 弹出CAS统一的登录页面，表示CAS服务端配置成功。
-<br />
- 3. 配置CAS客户端应用WEB程序1
-将/sample/casclient.war 部署到128中的TOMCAT中（/webapp/casclient.war）。
-对casclient.war中的web.xml需要做如下配置：
-
- 指定CAS登陆成功后客户端默认访问首页 defaultServerIndexUrl ，这里设定为 http://192.168.221.128:8080/casclient/index.jsp。
-
- 指定CAS客户端默认登录页面 customServerLoginUrl ,这里设定为 http://192.168.221.128:8080/casclient/caslogin.jsp
-
- 指定CAS客户端访问CAS服务端login服务地址 casServerLoginUrl，这里设定为 http://192.168.243.147:8080/casserver/login
-
- 指定CAS客户端访问CAS服务端地址 casServerUrlPrefix ，这里设定为 http://192.168.243.147:8080/casserver
-
- 指定CAS客户端名称（不含Context） serverName ，这里设定为 http://192.168.221.128:8080
-
- 访问 http://192.168.221.128/casclient/index.jsp 能弹出登陆页面，说明客户端应用WEB程序1配置成功。
-<br />
- 4. 配置CAS客户端应用WEB程序2
- 配置方法同3，将所有128地址替换为129即可。
+ 1.You need three web containers with three different ip address. Assume these addresses are:
+        192.168.243.147:8080 as CAS server. 147 for short.
+        192.168.221.128:8080 as CAS client. 128 for short.
+        192.168.221.129:8080 as an other CAS client. 129 for short.
  <br />
- 5. 验证程序
- 访问 http://192.168.221.128/casclient/index.jsp 显示了128的登陆页面 caslogin.jsp ,同时访问 http://192.168.221.129/casclient/index.jsp 显示了129的登录页面 caslogin.jsp 说明128 129两个客户端没有登陆。
+ 2.Deploy CAS server
+ Deploy /sample/casserver.war (In this project) to the tomcat at 147. Then view the page (http://192.168.243.147:8080/casserver/login).
+ If you see the CAS style login page, it mains you deploy CAS server successfully. No need more configures in CAS server web application.
+<br />
+ 3.Deploy CAS client at 128
+ Deploy /sample/casclient.war to the tomcat at 128. Then some changes are to be needed.
 
- 访问 http://192.168.221.128/casclient/index.jsp 显示128的登陆页面 caslogin.jsp。输入用户名为casuser，密码为casuser，点击登陆。如果跳转到 http://192.168.221.128/casclient/index.jsp 说明登陆成功。此时访问 http://192.168.221.129/casclient/index.jsp 并没有再跳到129的caslogin.jsp 说明单点登录成功。
+ Open the web.xml in the casclient.war.
 
-参考文章
+ Config the default client index page after logged in successfully.
+ The key is 'defaultServerIndexUrl', the value is 'http://192.168.221.128:8080/casclient/index.jsp'
+
+ Config the default client login page if you are not logged in the server.
+ The key is 'customServerLoginUrl', the value is 'http://192.168.221.128:8080/casclient/caslogin.jsp'
+
+ Config the CAS server login address for CAS client.
+ The key is 'casServerLoginUrl', the value is 'http://192.168.243.147:8080/casserver/login'
+
+ Config the CAS server address for CAS client.
+ This key is 'casServerUrlPrefix', the value is 'http://192.168.243.147:8080/casserver'
+
+ Config the server name for the CAS client.
+ The key is 'serverName', the value is 'http://192.168.221.128:8080'
+
+ View the page 'http://192.168.221.128/casclient/index.jsp'. If you see the custom login page( caslogin.jsp ), It
+  mains you set the CAS client successfully.
+<br />
+ 4.Deploy CAS client at 129
+ Deploy /sample/casclient.war to the tomcat at 128. The changes in web.xml are same to the STEP 3, you just need to
+ replace '128' to '129'.
+ <br />
+ 5. Verify
+ View 'http://192.168.221.128/casclient/index.jsp' , your see the custom login page in 128.
+ View 'http://192.168.221.129/casclient/index.jsp' , your see the custom login page in 129.
+ Return to the 128 custom login page, login in with 'casuser' as username and 'casuser' as password.
+ Then the browser will redirect to the 'http://192.168.221.128/casclient/index.jsp'.
+ View 'http://192.168.221.129/casclient/index.jsp', then you will find you could see the index page rather than
+ the 129 custom login page.
+
+Reference
 --------
 https://wiki.jasig.org/display/CAS/Using+CAS+without+the+CAS+login+screen
 
-联系我
+Contract Me
 -----------------
 Email: ymxbtbu@163.com

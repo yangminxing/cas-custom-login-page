@@ -15,7 +15,7 @@ TOMCAT 6
 示例如何使用
 ---------
 
-本项目一共由4个项目组成：
+本项目一共由5个项目组成：
 
 **cas-server-core** : CAS服务端核心，基于官方版本改造。
 **cas-server-webapp** :  CAS服务端应用程序，基于官方版本改造。引用cas-server-core。
