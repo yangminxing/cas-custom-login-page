@@ -17,9 +17,8 @@ TOMCAT 6
 How to use
 ---------
 
-This project mainly includes five parts:
+This project mainly includes four parts:
 
-**cas-server-core** : The core of CAS server based on official version.
 **cas-server-webapp** : The web application of CAS server this reference the server core. It is also based on official version.
 **cas-client-core** : The core of CAS client based on official version.
 **cas-client-sample** : A simple web application as CAS client reference the client core.

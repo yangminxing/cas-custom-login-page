@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <listener>
+        <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>CASSingle Sign OutFilter</filter-name>
+        <filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CASSingle Sign OutFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>CASFilter</filter-name>
+        <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
+
+        <!--
+            Config the default client index page after logged in successfully.
+            If you want to dynamic set client index page depends on your user information,
+            you could still use this one index page, the different point is when you have
+            logged in CAS server and redirected to index page, the index page read get
+            the username, then the index page search the database and get user information
+            with this username.
+        -->
+        <init-param>
+            <param-name>defaultServerIndexUrl</param-name>
+            <param-value>http://192.168.221.128:8080/test/index.jsp</param-value>
+        </init-param>
+
+        <!--
+            Config the default client login page if you have not logged in the server.
+            The client login page file name must be 'caslogin.jsp', while you could
+            change it in org.jasig.cas.client.authentication.AuthenticationFilter
+        -->
+        <init-param>
+            <param-name>customServerLoginUrl</param-name>
+            <param-value>http://192.168.221.128:8080/test/caslogin.jsp</param-value>
+        </init-param>
+
+        <!--
+            Config the CAS server login address for CAS client.
+            Be careful the end of url, it must be '/login'.
+        -->
+        <init-param>
+            <param-name>casServerLoginUrl</param-name>
+            <param-value>http://192.168.243.147:8080/casserver/login</param-value>
+        </init-param>
+
+        <!--
+            Config the server name for the CAS client.
+            If you deploy the web application as Context, you should not add
+            context name to the server name. Just ip address and port are needed.
+         -->
+        <init-param>
+            <param-name>serverName</param-name>
+            <param-value>http://192.168.221.128:8080</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CASFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>CASValidationFilter</filter-name>
+        <filter-class>
+            org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter
+        </filter-class>
+
+        <!--
+            Config the CAS server address for CAS client.
+            Be careful this url is different from the cas casServerLoginUrl.
+        -->
+        <init-param>
+            <param-name>casServerUrlPrefix</param-name>
+            <param-value>http://192.168.243.147:8080/casserver</param-value>
+        </init-param>
+
+        <!--
+            Config the server name for the CAS client.
+            If you deploy the web application as Context, you should not add
+            context name to the server name. Just ip address and port are needed.
+         -->
+        <init-param>
+            <param-name>serverName</param-name>
+            <param-value>http://192.168.221.128:8080</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CASValidationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>CASHttpServletRequest WrapperFilter</filter-name>
+        <filter-class>
+            org.jasig.cas.client.util.HttpServletRequestWrapperFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CASHttpServletRequest WrapperFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>CASAssertion Thread LocalFilter</filter-name>
+        <filter-class>org.jasig.cas.client.util.AssertionThreadLocalFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CASAssertion Thread LocalFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>
