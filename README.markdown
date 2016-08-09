@@ -52,11 +52,11 @@ This project mainly includes four parts:
  The key is 'serverName', the value is 'http://192.168.221.128:8080'
 
  View the page 'http://192.168.221.128/casclient/index.jsp'. If you see the custom login page( caslogin.jsp ), It means you set the CAS client successfully.
-<br />
+
  4. Deploy CAS client at 129
  Deploy /sample/casclient.war to the tomcat at 128. The changes in web.xml are same to the STEP 3, you just need to
  replace '128' to '129'.
- <br />
+
  5. Verify
  View 'http://192.168.221.128/casclient/index.jsp' , your see the custom login page in 128.
  View 'http://192.168.221.129/casclient/index.jsp' , your see the custom login page in 129.
