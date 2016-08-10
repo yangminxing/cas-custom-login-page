@@ -17,10 +17,10 @@ How to use
 
 This project mainly includes four parts:
 
-**cas-server-webapp** : The web application of CAS server this reference the server core. It is also based on official version.
-**cas-client-core** : The core of CAS client based on official version.
-**cas-client-sample** : A simple web application as CAS client reference the client core.
-**sample** : The demo that I packaged the cas-server-webapp  and cas-client-sample.
+**cas-server-webapp** : The web application of CAS server this reference the server core. It is also based on official version.<br />
+**cas-client-core** : The core of CAS client based on official version.<br />
+**cas-client-sample** : A simple web application as CAS client reference the client core.<br />
+**Sample** : The demo that I packaged the cas-server-webapp  and cas-client-sample.<br />
 
  1. You need three web containers with three different ip address. Assume these addresses are:
         192.168.243.147:8080 as CAS server. 147 for short.
