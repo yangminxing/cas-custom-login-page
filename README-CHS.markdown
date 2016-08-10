@@ -55,6 +55,12 @@ TOMCAT 6
 
  访问 http://192.168.221.128/casclient/index.jsp 显示128的登陆页面 caslogin.jsp。输入用户名为casuser，密码为casuser，点击登陆。如果跳转到 http://192.168.221.128/casclient/index.jsp 说明登陆成功。此时访问 http://192.168.221.129/casclient/index.jsp 并没有再跳到129的caslogin.jsp 说明单点登录成功。
 
+如何编译
+------
+因为我修改了源代码，所以这里边的项目就不能用maven打包了，不过cas-client-core除外。
+我把相关的每个项目需要引用的jar都放在每个项目下边的lib目录下了，然后请打开IDE然后把他们引用进去吧。
+
+
 参考文章
 --------
 https://wiki.jasig.org/display/CAS/Using+CAS+without+the+CAS+login+screen

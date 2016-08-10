@@ -64,7 +64,13 @@ This project mainly includes four parts:
  Then the browser will redirect to the 'http://192.168.221.128/casclient/index.jsp'.
  View 'http://192.168.221.129/casclient/index.jsp', then you will find you could see the index page rather than the 129 custom login page.
 
-Reference
+Lib Reference
+--------------
+ Because the I change the source code, you could not compile these projects by maven ( except cas-client-core ).
+ So I put the nessesary lib into 'cas-client-sample/web/WEB-INF/lib' and  '/cas-server-webapp/web/WEB-INF/lib'.
+ Please add them to libs dependence by using IDE, then use IDE to package there war.
+
+How to compile
 -------------
 https://wiki.jasig.org/display/CAS/Using+CAS+without+the+CAS+login+screen
 

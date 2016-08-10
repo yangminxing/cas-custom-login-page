@@ -35,7 +35,7 @@
         -->
         <init-param>
             <param-name>defaultServerIndexUrl</param-name>
-            <param-value>http://192.168.221.128:8080/test/index.jsp</param-value>
+            <param-value>http://192.168.221.128:8080/casclient/index.jsp</param-value>
         </init-param>
 
         <!--
@@ -45,7 +45,7 @@
         -->
         <init-param>
             <param-name>customServerLoginUrl</param-name>
-            <param-value>http://192.168.221.128:8080/test/caslogin.jsp</param-value>
+            <param-value>http://192.168.221.128:8080/casclient/caslogin.jsp</param-value>
         </init-param>
 
         <!--

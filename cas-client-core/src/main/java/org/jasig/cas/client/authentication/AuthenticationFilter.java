@@ -111,6 +111,12 @@ public class AuthenticationFilter extends AbstractCasFilter {
             // Set the custom client login page when you logout from CAS server.
             request.setAttribute("casServerLogoutUrl",casServerLoginUrl.replace("login","logout"));
             request.setAttribute("customServerLoginUrl",customServerLoginUrl);
+
+            //We must remove the attribute of CONST_CAS_ASSERTION manually
+            session.removeAttribute(CONST_CAS_ASSERTION);
+
+            filterChain.doFilter(request, response);
+            return;
         }
 
         if (assertion != null) {
