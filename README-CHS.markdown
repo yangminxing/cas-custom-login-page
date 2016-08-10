@@ -17,10 +17,10 @@ TOMCAT 6
 
 本项目一共由4个项目组成：
 
-**cas-server-webapp** :  CAS服务端应用程序，基于官方版本改造。引用cas-server-core。
-**cas-client-core** : CAS客户端核心，基于官方版本改造。
-**cas-client-sample** : 一个简单的应用WEB程序。引用cas-client-core。
-**sample** : 将以上项目直接打包的样例
+**cas-server-webapp** :  CAS服务端应用程序，基于官方版本改造。引用cas-server-core。<br />
+**cas-client-core** : CAS客户端核心，基于官方版本改造。<br />
+**cas-client-sample** : 一个简单的应用WEB程序。引用cas-client-core。<br />
+**Sample** : 将以上项目直接打包的样例<br />
 
  1. 准备三个服务容器，并部署于3个不同的IP（域名）地址下，为方便使用，这里假定三个容器的IP地址以及端口分别为：
         192.168.243.147:8080 作为CAS服务端容器地址，简称147
@@ -28,11 +28,11 @@ TOMCAT 6
         192.168.221.129:8080 作为应用web程序2的地址，简称129
  <br />`此处输入代码`
  2. 配置CAS服务端
-将/sample/casserver.war 部署到147中的TOMCAT中（/webapp/casserver.war）。casserver.war中无需进行多余的配置（已经去掉了HTTP保护限制）。
+将/Sample/casserver.war 部署到147中的TOMCAT中（/webapp/casserver.war）。casserver.war中无需进行多余的配置（已经去掉了HTTP保护限制）。
 访问 http://192.168.243.147:8080/casserver/login 弹出CAS统一的登录页面，表示CAS服务端配置成功。
 <br />
  3. 配置CAS客户端应用WEB程序1
-将/sample/casclient.war 部署到128中的TOMCAT中（/webapp/casclient.war）。
+将/Sample/casclient.war 部署到128中的TOMCAT中（/webapp/casclient.war）。
 对casclient.war中的web.xml需要做如下配置：
 
  指定CAS登陆成功后客户端默认访问首页 defaultServerIndexUrl ，这里设定为 http://192.168.221.128:8080/casclient/index.jsp。
