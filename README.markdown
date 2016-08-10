@@ -28,11 +28,11 @@ This project mainly includes four parts:
         192.168.221.129:8080 as an other CAS client. 129 for short.
  <br />
  2. Deploy CAS server
- Deploy /sample/casserver.war (In this project) to the tomcat at 147. Then view the page (http://192.168.243.147:8080/casserver/login).
+ Deploy /Sample/casserver.war (In this project) to the tomcat at 147. Then view the page (http://192.168.243.147:8080/casserver/login).
  If you see the CAS style login page, it mains you deploy CAS server successfully. No need more configures in CAS server web application.
 <br />
  3. Deploy CAS client at 128
- Deploy /sample/casclient.war to the tomcat at 128. Then some changes are to be needed.
+ Deploy /Sample/casclient.war to the tomcat at 128. Then some changes are to be needed.
 
  Open the web.xml in the casclient.war.
 
