@@ -66,9 +66,9 @@ This project mainly includes four parts:
 
 Lib Reference
 --------------
- Since I changed the source code, you could not compile these projects by Maven ( except cas-client-core ).
- So I put the nessesary libs into 'cas-client-sample/web/WEB-INF/lib' folder and  '/cas-server-webapp/web/WEB-INF/lib' folder.
- Please add libs to project dependence by using IDE, then use IDE to package these wars.
+ Since I changed the source code, you could not compile these projects by Maven ( except cas-client-core ),
+ I put the nessesary libs into 'cas-client-sample/web/WEB-INF/lib' folder and  '/cas-server-webapp/web/WEB-INF/lib' folder.
+ Please add libs to project dependence by using IDE, then use IDE to package these projects.
 
 How to compile
 -------------
